@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] a = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        // Find first maximum
+        int maxIndex = 0;
+        for (int i = 1; i < n; i++) {
+            if (a[i] > a[maxIndex]) {
+                maxIndex = i;
+            }
+        }
+
+        // Find last minimum
+        int minIndex = n - 1;
+        for (int i = n - 2; i >= 0; i--) {
+            if (a[i] < a[minIndex]) {
+                minIndex = i;
+            }
+        }
+
+        int answer = maxIndex + (n - 1 - minIndex);
+
+        // If maximum is before minimum, no overlap
+        // If maximum is after minimum, one position is counted twice
+        if (maxIndex > minIndex) {
+            answer--;
+        }
+
+        System.out.println(answer);
+    }
+}
