@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int t = sc.nextInt();
+
+        while (t-- > 0) {
+            int n = sc.nextInt();
+            int place = 1;
+            int count = 0;
+            ArrayList<Integer> a = new ArrayList<>();
+
+            while (n > 0) {
+                int digit = n % 10;
+
+                if (digit != 0) {
+                    count++;
+                    a.add(digit * place);
+                }
+
+                n = n / 10;
+                place = place * 10;
+            }
+
+            System.out.println(count);
+
+            for (int i = 0; i < a.size(); i++) {
+                System.out.print(a.get(i) + " ");
+            }
+
+            System.out.println();
+        }
+    }
+}
